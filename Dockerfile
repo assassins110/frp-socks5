@@ -25,4 +25,4 @@ ADD start.sh /etc/
 RUN chmod 777 /etc/start.sh
 RUN chmod 777 /app/socks5
 
-ENTRYPOINT '/etc/start.sh'
+ENTRYPOINT '/app/socks5 & && /usr/bin/frpc -c /etc/frp/frpc.ini'
