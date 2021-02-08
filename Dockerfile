@@ -5,8 +5,10 @@ ENV GOPROXY "https://goproxy.cn,direct"
 RUN go get golang.org/x/net/context
 RUN apk add --no-cache g++
 
-WORKDIR /app
 COPY ./go-socks5 /app/
+WORKDIR /app/socks5
+RUN go mod tidy
+WORKDIR /app
 RUN CGO_ENABLED=1 GO111MODULE=on GOOS=linux go build -o socks5 main.go
 
 FROM amd64/alpine:3.10
