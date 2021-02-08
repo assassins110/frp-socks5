@@ -20,7 +20,7 @@ RUN cd /root \
 
 WORKDIR /app
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=builder /go/src/github.com/olebedev/socks5/socks5 /
+COPY --from=builder /go/src/github.com/olebedev/socks5/socks5 /app
 ADD start.sh /etc/
 RUN chmod 777 /etc/start.sh
 
