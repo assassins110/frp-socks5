@@ -1,13 +1,10 @@
 FROM golang:1.15.2-alpine3.12 AS builder
 LABEL maintainer="tiger <codework9527@gmail.com>"
-
-ENV GOPROXY "https://goproxy.cn,direct"
 RUN apk add --no-cache g++
-
+ENV GOPROXY "https://goproxy.cn,direct"
 COPY ./go-socks5 /app/
-WORKDIR /app/socks5
-RUN go mod tidy
 WORKDIR /app
+RUN go mod download
 RUN CGO_ENABLED=1 GO111MODULE=on GOOS=linux go build -o socks5 main.go
 
 FROM amd64/alpine:3.10
