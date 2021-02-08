@@ -22,5 +22,6 @@ WORKDIR /app
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/src/github.com/olebedev/socks5/socks5 /
 ADD start.sh /etc/
+RUN chmod 777 /etc/start.sh
 
 ENTRYPOINT '/etc/start.sh'
