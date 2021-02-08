@@ -2,6 +2,7 @@ FROM golang:1.15.2-alpine3.12 AS builder
 LABEL maintainer="tiger <codework9527@gmail.com>"
 
 ENV GOPROXY "https://goproxy.cn,direct"
+RUN go get golang.org/x/net/context
 RUN apk add --no-cache g++
 
 WORKDIR /app
