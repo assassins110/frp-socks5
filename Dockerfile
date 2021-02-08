@@ -21,8 +21,8 @@ RUN cd /root \
 WORKDIR /app
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/src/github.com/olebedev/socks5/socks5 /app
-ADD start.sh /etc/
+COPY start.sh /etc/start.sh
 RUN chmod 777 /etc/start.sh
 RUN chmod 777 /app/socks5
 
-ENTRYPOINT '/app/socks5 & && /usr/bin/frpc -c /etc/frp/frpc.ini'
+ENTRYPOINT '/etc/start.sh'
