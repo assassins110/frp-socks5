@@ -9,7 +9,7 @@ import (
 )
 
 type params struct {
-	User     string `env:"USER" envDefault:"Tiger"`
+	User     string `env:"USER" envDefault:"9527"`
 	Password string `env:"PASS" envDefault:"9527"`
 	Port     string `env:"PORT" envDefault:"1080"`
 }
